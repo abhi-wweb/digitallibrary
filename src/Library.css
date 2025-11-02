@@ -1,0 +1,320 @@
+/* 🌐 Base Layout */
+.library {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #64b5f6, #e8eaec);
+  min-height: 100vh;
+  padding: 100px 40px 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* 📜 Custom Scrollbar */
+.library::-webkit-scrollbar {
+  width: 10px;
+}
+
+.library::-webkit-scrollbar-track {
+  background: #e8f0fa;
+  border-radius: 10px;
+}
+
+.library::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #64b5f6, #1976d2);
+  border-radius: 10px;
+}
+
+.library::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #42a5f5, #1565c0);
+}
+
+/* 📚 Header */
+.library-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: fadeInDown 0.8s ease;
+}
+
+.library-header h1 {
+  font-size: 2.3rem;
+  color: #0d47a1;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* 🧩 Library Grid */
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  justify-content: center;
+}
+
+/* 📘 Book Cards */
+.book-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(25, 118, 210, 0.2);
+}
+
+/* 🎨 Theme Borders */
+.theme-0 {
+  border-top: 6px solid #1976d2;
+}
+.theme-1 {
+  border-top: 6px solid #42a5f5;
+}
+.theme-2 {
+  border-top: 6px solid #64b5f6;
+}
+
+/* 📖 Book Header */
+.book-header {
+  text-align: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #e0e0e0;
+  background-color: #f9fcff;
+}
+
+.book-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.book-sub {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* 📄 Book Preview (PDF Thumbnail) */
+.book-preview {
+  padding: 15px;
+  text-align: center;
+}
+
+.thumb-canvas {
+  width: 100%;
+  border-radius: 12px;
+  background-color: #f2f6fc;
+  transition: transform 0.3s ease;
+}
+
+.thumb-canvas:hover {
+  transform: scale(1.03);
+}
+
+/* 🔒 Auth Popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeInOverlay 0.4s ease;
+}
+
+.popup {
+  background: #fefefe;
+  border-radius: 20px;
+  padding: 50px 30px;
+  width: 90%;
+  height: 45%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: fadeInPopup 0.3s ease;
+}
+
+/* ✨ Popup Animations */
+@keyframes fadeInPopup {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 🔑 Inputs */
+.popup input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cfd8dc;
+  font-size: 0.95rem;
+  transition: 0.2s;
+}
+
+.popup input:focus {
+  border-color: #42a5f5;
+  box-shadow: 0 0 6px rgba(66, 165, 245, 0.4);
+}
+
+/* 🚀 Buttons */
+.popup-btn {
+  margin-top: 15px;
+   background: linear-gradient(135deg, #00bcd4, #1976d2);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup-btn:hover {
+  background: linear-gradient(90deg, #1565c0, #1e88e5);
+  transform: scale(1.05);
+}
+
+/* 🔁 Toggle login/signup */
+.toggle-auth {
+  margin-top: 15px;
+  color: #555;
+}
+
+.toggle-auth span {
+  color: #1e88e5;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.toggle-auth span:hover {
+  text-decoration: underline;
+}
+
+/* ❌ Close Button */
+.popup-close {
+  width: 100%;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popup-close:hover {
+  color: #000;
+}
+
+/* 🪄 Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 📱 Responsive */
+@media (max-width: 700px) {
+  .library {
+    padding: 90px 20px 50px;
+  }
+  .book-card {
+    border-radius: 14px;
+  }
+  .popup {
+    padding: 30px 20px;
+  }
+}
+/* 🌟 Hero Section */
+.library-hero {
+ background: linear-gradient(135deg, #00bcd4, #1976d2);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 50px 50px 50px 50px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.library-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.library-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+.hero-btn {
+  background: #fff;
+  color: #1976d2;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.hero-btn:hover {
+  background: #e3f2fd;
+  transform: scale(1.05);
+}
+
+@keyframes fadeInHero {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

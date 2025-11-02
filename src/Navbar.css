@@ -1,0 +1,248 @@
+/* 🌐 Navbar Base */
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(90deg, #1976d2, #64b5f6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  color: #fff;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-logo h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #cfe8ff;
+}
+
+/* Right Action */
+.signup-btn {
+  background-color: #fff;
+  color: #1976d2;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #cfe8ff;
+  transform: scale(1.05);
+}
+
+/* Hamburger Menu */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%;
+    width: 60%;
+    height: 100vh;
+    background: #1976d2;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease;
+    gap: 30px;
+  }
+
+  .nav-links.open {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+
+  .nav-actions {
+    display: none;
+  }
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.popup {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.popup h2 {
+  margin-bottom: 15px;
+  color: #1976d2;
+}
+
+.popup input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.popup-btn {
+  margin-top: 15px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-btn:hover {
+  background-color: #1565c0;
+}
+
+.toggle-auth span {
+  color: #1976d2;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.popup-close {
+  margin-top: 15px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-close:hover {
+  color: #1976d2;
+  transform: scale(1.2);
+}
+/* 🌟 Logo Container */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 5px 10px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, rgba(0, 255, 234, 0.15), rgba(0, 136, 255, 0.15));
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+}
+
+/* 🖼️ Logo Image */
+.logo-img {
+  width: 100px;
+  height: 52px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* 🧠 Title Text */
+.nav-logo h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff00cc, #00ffff, #00ff7f, #0078ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: colorShift 5s infinite linear;
+  text-transform: uppercase;
+}
+
+/* 🎆 Animated Gradient Glow */
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.nav-logo h2 {
+  background-size: 300% 300%;
+}
+
+/* ✨ Hover Effects */
+.nav-logo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  background: linear-gradient(90deg, rgba(0, 255, 234, 0.25), rgba(0, 136, 255, 0.25));
+}
+
+.nav-logo:hover .logo-img {
+  transform: rotate(-8deg) scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+}
+
+.nav-logo:hover h2 {
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+}
