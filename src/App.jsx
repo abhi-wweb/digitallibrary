@@ -39,6 +39,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/library" element={<Library files={files} />} />
+          <Route path="/library/:course" element={<Library files={files} />} />   
           <Route path="/upload" element={<Upload fetchFiles={fetchFiles} />} />
           <Route path="/about" element={<About />} />
           <Route path="/profile" element={<Profile />} />

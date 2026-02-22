@@ -53,7 +53,7 @@ export default function Home() {
       </section>
 
       {/* Featured Files Section */}
-      <section className="featured">
+      {/* <section className="featured">
         <h2>Latest Uploads</h2>
         <div className="featured-files">
           {featuredFiles.length === 0 && <p>No files uploaded yet.</p>}
@@ -77,7 +77,7 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Call to Action */}
       <section className="cta">

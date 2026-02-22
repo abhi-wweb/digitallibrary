@@ -32,6 +32,12 @@ export default function AdminLogin({ onLoginSuccess }) {
     }
   };
 
+  const handleCancel = () => {
+    setUsername("");
+    setPassword("");
+    setLoginError("");
+  };
+
   return (
     <div className="admin-login-page">
       <h2>Admin Login</h2>
@@ -50,7 +56,12 @@ export default function AdminLogin({ onLoginSuccess }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Login</button>
+        <div className="admin-btn-group">
+          <button type="submit">Login</button>
+          <button type="button" className="cancel-btn" onClick={handleCancel}>
+            Cancel
+          </button>
+        </div>
         {loginError && <p className="error-text">{loginError}</p>}
       </form>
     </div>

@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const dotenv = require("dotenv");
 const axios = require("axios");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 dotenv.config();
@@ -39,7 +39,9 @@ const upload = multer({ storage });
 // Get files
 app.get("/files", async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM files ORDER BY uploaded_at DESC");
+    const result = await pool.query(
+      "SELECT * FROM files ORDER BY uploaded_at DESC"
+    );
     res.json(result.rows);
   } catch (err) {
     console.error("❌ Error fetching files:", err.message);
@@ -51,11 +53,17 @@ app.get("/files", async (req, res) => {
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     const file = req.file;
-    if (!file) return res.status(400).json({ error: "No file uploaded" });
+    const { course } = req.body;
+
+    if (!file)
+      return res.status(400).json({ error: "No file uploaded" });
+
+    if (!course)
+      return res.status(400).json({ error: "Course is required" });
 
     const result = await pool.query(
-      "INSERT INTO files (name, url) VALUES ($1, $2) RETURNING *",
-      [file.originalname, `/uploads/${file.filename}`]
+      "INSERT INTO files (name, url, course) VALUES ($1, $2, $3) RETURNING *",
+      [file.originalname, `/uploads/${file.filename}`, course]
     );
 
     res.status(201).json(result.rows[0]);

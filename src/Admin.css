@@ -1,94 +1,88 @@
-/* ===== Global Styling ===== */
-.admin-page {
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  background-color: #f8fafc;
-  min-height: 100vh;
-   margin: 80px auto;
-  padding: 30px;
 }
 
-/* ===== Header ===== */
+/* ===== ADMIN PAGE ===== */
+.admin-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #f3f8ff, #fff7f0);
+}
+
+/* ===== HEADER ===== */
 .admin-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #1976d2, #42a5f5);
-  color: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .admin-header h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 28px;
+  color: #6c63ff;
 }
 
 .logout-btn {
-  background-color: #ef5350;
-  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
   border: none;
-  padding: 10px 18px;
-  font-size: 0.95rem;
-  border-radius: 6px;
+background: linear-gradient(135deg, #4e73df, #1cc88a);  color: white;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .logout-btn:hover {
-  background-color: #d32f2f;
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.35);
 }
 
-/* ===== Files Section ===== */
+/* ===== FILES SECTION ===== */
 .files-section {
-  background-color: white;
-  border-radius: 12px;
+  background: rgb(39, 36, 36);
   padding: 20px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   overflow-x: auto;
 }
 
-.files-section p {
-  font-size: 1rem;
-  text-align: center;
-  color: #555;
-  margin-top: 20px;
-}
-
-/* ===== Table Styling ===== */
 .admin-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
-  min-width: 800px;
+  min-width: 700px;
 }
 
 .admin-table th,
 .admin-table td {
   padding: 12px 15px;
   text-align: left;
-  border-bottom: 1px solid #e0e0e0;
-  font-size: 0.95rem;
 }
 
-.admin-table th {
-  background-color: #1976d2;
-  color: white;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+.admin-table thead {
+  background: #6c63ff;
+  color: rgb(208, 203, 203);
+  border-radius: 20px;
 }
 
-.admin-table tr:hover {
-  background-color: #f5f9ff;
-  transition: background 0.2s ease;
+.admin-table tbody tr {
+  transition: background 0.3s ease;
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background: #171718;
+}
+
+.admin-table tbody tr:hover {
+  background: #212123;
 }
 
 .admin-table a {
-  color: #1976d2;
+  color: #6c63ff;
   text-decoration: none;
   font-weight: 500;
 }
@@ -97,147 +91,155 @@
   text-decoration: underline;
 }
 
-/* ===== Delete Button ===== */
+/* ===== DELETE BUTTON ===== */
 .delete-btn {
-  background-color: #ef5350;
-  color: white;
-  border: none;
-  border-radius: 6px;
   padding: 6px 12px;
+  border-radius: 12px;
+  border: none;
+  background: #ff4d4d;
+  color: white;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .delete-btn:hover {
-  background-color: #d32f2f;
-  transform: scale(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(255, 77, 77, 0.35);
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 768px) {
+/* ===== LOADING & EMPTY ===== */
+.files-section p {
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  padding: 20px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 800px) {
   .admin-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .admin-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .logout-btn {
-    align-self: flex-end;
+    gap: 15px;
+    text-align: center;
   }
 
   .admin-table {
     min-width: 100%;
-    font-size: 0.85rem;
-  }
-
-  .delete-btn {
-    font-size: 0.8rem;
-    padding: 5px 10px;
   }
 }
-/* ===== Admin Login Page ===== */
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== ADMIN LOGIN PAGE ===== */
 .admin-login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #00bcd4, #1976d2);
-  font-family: "Poppins", sans-serif;
-  color: white;
+background: linear-gradient(135deg, #4e73df, #1cc88a);  padding: 20px;
 }
 
 .admin-login-page h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 25px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #e9e9ed;
+  text-align: center;
 }
 
-/* ===== Login Form ===== */
+/* ===== LOGIN FORM ===== */
 .admin-login-form {
-  background-color: white;
-  color: #333;
-  display: flex;
-  flex-direction: column;
-  padding: 40px 35px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  background: white;
+  padding: 35px 30px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
   width: 100%;
   max-width: 400px;
-  animation: fadeIn 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .admin-login-form input {
-  margin-bottom: 18px;
-  padding: 12px 14px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 14px;
   outline: none;
-  transition: all 0.3s ease;
+  transition: border 0.3s ease;
 }
 
 .admin-login-form input:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 6px rgba(25, 118, 210, 0.4);
+  border-color: #f7f7f9;
 }
 
-.admin-login-form button {
-  background-color: #1976d2;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 1rem;
-  font-weight: 500;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
-}
-
-.admin-login-form button:hover {
-  background-color: #1565c0;
-  transform: scale(1.03);
-}
-
-/* ===== Error Message ===== */
-.error-text {
-  color: #e53935;
+/* ===== BUTTON GROUP ===== */
+.admin-btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
   margin-top: 10px;
-  font-size: 0.95rem;
-  text-align: center;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.admin-login-form button[type="submit"] {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+background: linear-gradient(135deg, #4e73df, #1cc88a);  color: white;
+  font-size: 16px;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* ===== Animation ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.admin-login-form button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(108, 99, 255, 0.35);
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 480px) {
+/* ===== CANCEL BUTTON ===== */
+.cancel-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background: #e0e0e0;
+}
+
+/* ===== ERROR TEXT ===== */
+.error-text {
+  color: #ff4d4d;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 500px) {
   .admin-login-form {
-    padding: 30px 25px;
+    padding: 25px 20px;
   }
 
-  .admin-login-page h2 {
-    font-size: 1.6rem;
+  .admin-btn-group {
+    flex-direction: column;
   }
 
-  .admin-login-form input,
-  .admin-login-form button {
-    font-size: 0.95rem;
+  .admin-btn-group button {
+    width: 100%;
   }
 }

@@ -7,29 +7,9 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const chatEndRef = useRef(null);
 
-  // Auto scroll when new message appears
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  // Load previous history
-  useEffect(() => {
-    fetchHistory();
-  }, []);
-
-  const fetchHistory = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/history");
-      const history = await res.json();
-      const formatted = history.flatMap((h) => [
-        { role: "user", content: h.question },
-        { role: "assistant", content: h.answer },
-      ]);
-      setMessages(formatted.reverse());
-    } catch (err) {
-      console.error("❌ Failed to load history:", err);
-    }
-  };
 
   const handleAsk = async () => {
     if (!question.trim()) return;
@@ -46,8 +26,6 @@ export default function Chat() {
         body: JSON.stringify({ question }),
       });
 
-      if (!res.body) throw new Error("No stream found");
-
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
 
@@ -63,80 +41,83 @@ export default function Chat() {
 
         for (const ev of events) {
           if (!ev.trim()) continue;
-          if (ev.includes("[DONE]")) {
-            setLoading(false);
-            return;
-          }
 
           if (ev.startsWith("data: ")) {
-            try {
-              const payload = JSON.parse(ev.slice(6));
-              if (payload.token) {
-                aiMessage.content += payload.token;
+            const payload = JSON.parse(ev.slice(6));
+            if (payload.token) {
+              aiMessage.content += payload.token;
 
-                setMessages((prev) => {
-                  const updated = [...prev];
-                  updated[updated.length - 1] = { ...aiMessage };
-                  return updated;
-                });
-              }
-            } catch (err) {
-              console.error("JSON parse error:", err);
+              setMessages((prev) => {
+                const updated = [...prev];
+                updated[updated.length - 1] = { ...aiMessage };
+                return updated;
+              });
             }
           }
         }
       }
     } catch (err) {
-      console.error("❌ Ask error:", err);
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: "⚠️ Server error. Try again later." },
-      ]);
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleClearHistory = async () => {
-    try {
-      await fetch("http://localhost:3000/history", { method: "DELETE" });
-      setMessages([]);
-    } catch (err) {
-      console.error("❌ Clear history error:", err);
-    }
-  };
-
   return (
-    <div className="chat-container">
-      <header className="chat-header">
-        <h2>AI Study Assistant</h2>
-        <button onClick={handleClearHistory}>🗑️ Clear</button>
-      </header>
+    <div className="landing-container">
 
-      <main className="chat-main">
-        {messages.map((msg, i) => (
-          <div key={i} className={`chat-message ${msg.role}`}>
-            <div className="bubble">{msg.content}</div>
+      {/* SHOW LANDING ONLY IF NO MESSAGES */}
+      {messages.length === 0 && (
+        <div className="landing-center">
+
+          <div className="brand">
+            <div className="logo-icon">✦</div>
+            <h1>NEHA</h1>
           </div>
-        ))}
 
-        {loading && (
-          <div className="chat-message assistant">
-            <div className="bubble typing">
-              <span className="dot"></span>
-              <span className="dot"></span>
-              <span className="dot"></span>
+          <h2 className="hero-text">
+            Ask Anything About Study <br />
+            <span>with Simple Prompt</span>
+          </h2>
+
+          <div className="pill-row">
+            <div className="pill">SaaS Landing Page</div>
+            <div className="pill">Digital Agency Website</div>
+            <div className="pill">Portfolio Site</div>
+            <div className="pill">Dashboard</div>
+          </div>
+        </div>
+      )}
+
+      {/* CHAT AREA */}
+      {messages.length > 0 && (
+        <div className="chat-area">
+          {messages.map((msg, i) => (
+            <div key={i} className={`chat-message ${msg.role}`}>
+              <div className="bubble">{msg.content}</div>
             </div>
-          </div>
-        )}
-        <div ref={chatEndRef} />
-      </main>
+          ))}
 
-      <footer className="chat-input">
+          {loading && (
+            <div className="chat-message assistant">
+              <div className="bubble typing">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          )}
+
+          <div ref={chatEndRef} />
+        </div>
+      )}
+
+      {/* INPUT ALWAYS AT BOTTOM */}
+      <div className="prompt-box fixed">
         <textarea
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
-          placeholder="Type your message..."
+          placeholder="Ask Neha about your study"
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
@@ -144,8 +125,11 @@ export default function Chat() {
             }
           }}
         />
-        <button onClick={handleAsk} disabled={loading}>Send</button>
-      </footer>
+        <button onClick={handleAsk} disabled={loading}>
+          ↑
+        </button>
+      </div>
+
     </div>
   );
 }
